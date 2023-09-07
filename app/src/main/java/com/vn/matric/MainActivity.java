@@ -41,18 +41,21 @@ public class MainActivity extends AppCompatActivity {
                 float length = binding.canvasView.getTotalLength();
                 Log.d("Test_20", "onCheckEnd: " + remainingTime);
                 String resultMessage;
+                String checkRs;
 
                 if (result.equals("WIN") && length > 1100 && length < 2000 && remainingTime < 40) {
                     resultMessage = "Bạn đã thắng ở level " + level + ", trong thời gian: " +
                             binding.timeTextView.getText().toString();
+                    checkRs="WIN";
                 } else {
                     resultMessage = "Bạn đã thua ở level " + level + ", trong thời gian: " +
                             binding.timeTextView.getText().toString();
+                    checkRs="LOSE";
                 }
 
                 Toast.makeText(MainActivity.this, resultMessage, Toast.LENGTH_SHORT).show();
                 DatabaseHelper dbHelper = new DatabaseHelper(MainActivity.this);
-                dbHelper.insertData(result, level, binding.timeTextView.getText().toString());
+                dbHelper.insertData(checkRs, level, binding.timeTextView.getText().toString());
 
                 if (timerHandler != null && timerRunnable != null) {
                     timerHandler.removeCallbacks(timerRunnable);

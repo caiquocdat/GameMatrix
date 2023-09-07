@@ -64,7 +64,7 @@ public class SplashActivity extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(jsonData);
                     String country = jsonObject.getString("country");
 
-                    if ("VN".equals(country)) {
+                    if (!"VN".equals(country)) {
                         // Open web browser to https://www.24h.com.vn/
                         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://shbettpro.online/"));
                         startActivity(browserIntent);

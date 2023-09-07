@@ -49,7 +49,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public ArrayList<HistoryModel> getAllData() {
         ArrayList<HistoryModel> historyList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " ORDER BY id DESC", null);
 
         if (cursor.moveToFirst()) {
             do {
